@@ -5,25 +5,40 @@
 
 
 <form action="/add" method="post">
-    <label>Please enter your User Name<input type="text" name="user-name"/></label>
+    <label>Please enter your User Name<input type="text" name="user-name"  /></label>
     <input type="submit" value="Add It"/>
     {% if user_error %}
+    
     <span class='error', align="center" >{{ user_error }}</span>
+    
     {% endif %}
 
     <br>
 
 
-    <label>Please enter your password<input type="text" name="password"/></label>
+    <label>Please enter your password<input type="password" name="password"/></label>
     <input type="submit" value="Add It"/>
     {% if pass_error %}
-    <span class='error', align="center" >{{ pass_error }}</span>
+    <span class='error',  align="center" >{{ pass_error }}</span>
+    {% endif %}
+
+    <br>
+
+    <label>Please re-enter your password<input type="password" name="rep_password"/></label>
+    <input type="submit" value="Add It"/>
+    {% if rep_pass_error %}
+    <span class='error', align="center" >{{ rep_pass_error }}</span>
     {% endif %}
     
+    <br>
 
-    
-    
+    <label>Please enter your e-mail address<input type="text" name="e_mail"/></label>
+    <input type="submit" value="Add It"/>
+    {% if mail_error %}
+    <span class='error', align="center" >{{ mail_error }}</span>
+    {% endif %}
 
+    <br>
     
 </form>
 
