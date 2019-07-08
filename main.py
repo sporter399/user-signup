@@ -13,16 +13,16 @@ def add_user_info():
     
 
     if (len(user_name) <= 3) or (user_name.strip() == ""):
-        error = "User names must contain at least 4 characters. Please try again."
-        return redirect("/?error=" + error)
+        user_error = "User names must contain at least 4 characters. Please try again."
+        return redirect("/?user_error=" + user_error)
 
         user_name_escaped = cgi.escape(user_name, quote=True)
 
     
 
     if (len(password) <= 3) or (password.strip() == ""):
-        error = "Passwords must contain at least 4 characters. Please try again."
-        return redirect("/?error=" + error)
+        pass_error = "Passwords must contain at least 4 characters. Please try again."
+        return redirect("/?pass_error=" + pass_error)
 
     password_escaped = cgi.escape(password, quote=True)
 
@@ -34,8 +34,10 @@ def add_user_info():
 
 @app.route("/")
 def index():
-    encoded_error = request.args.get("error")
-    return render_template('edit.html', error=encoded_error and cgi.escape(encoded_error, quote=True))
+    user_encoded_error = request.args.get("user_error")
+    pass_encoded_error = request.args.get("pass_error")
+    return render_template('edit.html', user_error=user_encoded_error and cgi.escape(user_encoded_error, quote=True), 
+        pass_error=pass_encoded_error and cgi.escape(pass_encoded_error, quote=True))
 
 
 app.run()

@@ -7,17 +7,17 @@
 <form action="/add" method="post">
     <label>Please enter your User Name<input type="text" name="user-name"/></label>
     <input type="submit" value="Add It"/>
-    {% if error %}
-    <span class='error', align="center" >{{ error }}</span>
+    {% if user_error %}
+    <span class='error', align="center" >{{ user_error }}</span>
     {% endif %}
 
-
+    <br>
 
 
     <label>Please enter your password<input type="text" name="password"/></label>
     <input type="submit" value="Add It"/>
-    {% if error %}
-    <span class='error', align="center" >{{ error }}</span>
+    {% if pass_error %}
+    <span class='error', align="center" >{{ pass_error }}</span>
     {% endif %}
     
 
