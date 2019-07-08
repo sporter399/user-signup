@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<form action="/add" method="post">
+    <label>Please enter your User Name<input type="text" name="user-name"/></label>
+    <input type="submit" value="Add It"/>
+    {% if error %}
+    <span class='error', align="center" >{{ error }}</span>
+    {% endif %}
+
+
+
+
+    <label>Please enter your password<input type="text" name="password"/></label>
+    <input type="submit" value="Add It"/>
+    {% if error %}
+    <span class='error', align="center" >{{ error }}</span>
+    {% endif %}
+    
+
+    
+    
+
+    
+</form>
+
+{% endblock %}
