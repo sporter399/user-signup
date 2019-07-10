@@ -12,10 +12,12 @@ def add_user_info():
     password = request.form['password']
     rep_password = request.form['rep_password']
     e_mail = request.form['e_mail']
+    #register_error = False 
     
 
     if (len(user_name) <= 3) or (user_name.strip() == ""):
         user_error = "User names must contain at least 4 characters. Please try again."
+        #register_error = True
         return redirect("/?user_error=" + user_error)
 
     user_name_escaped = cgi.escape(user_name, quote=True)
@@ -40,9 +42,14 @@ def add_user_info():
 
     e_mail_escaped = cgi.escape(e_mail, quote=True)
 
+    """
+    
+    if (register_error == True):
+        print("user error is,", register_error)
+        return render_template('edit.html')
+    """
 
-
-
+    
     return render_template('add-confirmation.html', name=user_name, password=password, rep_password=rep_password, e_mail=e_mail)
 
 
@@ -55,9 +62,13 @@ def index():
     rep_pass_encoded_error = request.args.get("rep_pass_error")
     e_mail_encoded_error = request.args.get("mail_error")
     
-    return render_template('edit.html', user_error=user_encoded_error and cgi.escape(user_encoded_error, quote=True), 
-        pass_error=pass_encoded_error and cgi.escape(pass_encoded_error, quote=True), rep_pass_error=rep_pass_encoded_error and
-        cgi.escape(rep_pass_encoded_error, quote=True), mail_error=e_mail_encoded_error and cgi.escape(e_mail_encoded_error, quote=True))
+    return render_template(
+        'edit.html',
+        user_error=user_encoded_error and cgi.escape(user_encoded_error, quote=True), 
+        pass_error=pass_encoded_error and cgi.escape(pass_encoded_error, quote=True),
+        rep_pass_error=rep_pass_encoded_error and cgi.escape(rep_pass_encoded_error, quote=True),
+        mail_error=e_mail_encoded_error and cgi.escape(e_mail_encoded_error, quote=True)
+        )
 
 
 app.run()
